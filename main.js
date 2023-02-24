@@ -15,8 +15,19 @@ const likes = document.querySelectorAll('.like-glyph')
           pushLike.textContent = FULL_HEART
           pushLike.className = 'activated-heart'
         })
+        .catch((error) => {
+          const err = document.getElementById("modal")
+          err.className = ''
+          err.textContent = error
+          setTimeout(() => err.className = 'hidden', 3000)
+          //3000 is miliseconds. means 3 seconds. this is making the error message disappear and then reappear for 3 seconds.
+        })
+      } else {
+        pushLike.textContent = EMPTY_HEART
+        pushLike.className = '.like-glyph'
       }
-      
+      //this is so the heart can be changed back to empty if you click it again
+
       //console.log(pushLike)
       //^ this is just a midway test to see if what youre 
       //doing is what you should be doing
